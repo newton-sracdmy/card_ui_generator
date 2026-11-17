@@ -1,0 +1,872 @@
+{
+  "version": 1,
+  "name": "Kitchen Sink",
+  "ident": "",
+  "match": {
+    "designation": [
+      "kitchen sink"
+    ],
+    "business": [
+      "sink university"
+    ]
+  },
+  "faces": [
+    {
+      "id": "front",
+      "name": "Front",
+      "role": "payment",
+      "designW": 500,
+      "designH": 648,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "#230C6E",
+      "clipRadius": 0,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": [
+        {
+          "type": "rect",
+          "name": "Panel",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 60.76,
+          "y": 163.82,
+          "w": 191.99,
+          "h": 211.2,
+          "radius": 29.505,
+          "fill": "#E01B24",
+          "fillOpacity": 0.08,
+          "stroke": "#38D9C0",
+          "strokeWidth": 2.459,
+          "strokeOpacity": 1,
+          "id": "k1"
+        },
+        {
+          "type": "rect",
+          "name": "Tilted Badge",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 12,
+          "x": 400.25,
+          "y": 62.41,
+          "w": 99.751,
+          "h": 40.693,
+          "radius": 9.835,
+          "fill": "#F6D32D",
+          "fillOpacity": 1,
+          "stroke": "",
+          "strokeWidth": 0,
+          "strokeOpacity": 1,
+          "id": "k2"
+        },
+        {
+          "type": "image",
+          "name": "NFC",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 20,
+          "x": 411.471,
+          "y": 478.118,
+          "src": "UAP_Student_Card_UI/1790672287-NFC.png",
+          "w": 62.344,
+          "h": 50.858,
+          "fit": "contain",
+          "autoCrop": true,
+          "tint": "#38D9C0",
+          "fallbackColor": "",
+          "id": "k4"
+        },
+        {
+          "type": "image",
+          "name": "Missing",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 24.938,
+          "y": 569.669,
+          "src": "CARD_UI/does-not-exist.png",
+          "w": 49.875,
+          "h": 40.693,
+          "fit": "cover",
+          "autoCrop": false,
+          "tint": "",
+          "fallbackColor": "#444444",
+          "id": "k5"
+        },
+        {
+          "type": "text",
+          "name": "Department",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 200.24,
+          "y": 461.86,
+          "text": "DEPARTMENT : {{Department|upper}}",
+          "font": "HelveticaRegular",
+          "size": 18.44,
+          "color": "#38D9C0",
+          "opacity": 1,
+          "ax": 0.5,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 374.065,
+          "maxLines": 2,
+          "lineSpacing": 24.418,
+          "minSize": 14.752,
+          "step": 1.229,
+          "valign": "top",
+          "hideIfEmpty": true,
+          "id": "k9"
+        },
+        {
+          "type": "text",
+          "name": "Badge",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": -90,
+          "x": 24.94,
+          "y": 350.54,
+          "text": "STUDENTdgdfgfgfghfgh",
+          "font": "HelveticaBold",
+          "size": 27.046,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0.5,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 374.065,
+          "maxLines": 2,
+          "lineSpacing": 24.418,
+          "minSize": 14.752,
+          "step": 1.229,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "k10"
+        },
+        {
+          "type": "rich",
+          "name": "Reg No",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 90,
+          "x": 473.815,
+          "y": 335.698,
+          "ax": 0.5,
+          "ay": 0.5,
+          "hideIfEmpty": false,
+          "segments": [
+            {
+              "text": "REG NO : ",
+              "font": "HelveticaBold",
+              "size": 15.982,
+              "color": "#38D9C0",
+              "opacity": 1
+            },
+            {
+              "text": "{{RegNo}}",
+              "font": "HelveticaBold",
+              "size": 22.129,
+              "color": "#FFFFFF",
+              "opacity": 1
+            }
+          ],
+          "id": "k11"
+        },
+        {
+          "type": "text",
+          "name": "Footnote",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 473.815,
+          "y": 635.791,
+          "text": "This card is valid for the authorised person only and must be returned when asked.",
+          "font": "HelveticaItalic",
+          "size": 15.982,
+          "color": "#FFFFFF",
+          "opacity": 0.7,
+          "ax": 1,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "wrap",
+          "maxWidth": 299.252,
+          "maxLines": 3,
+          "lineSpacing": 15.264,
+          "minSize": 14.752,
+          "step": 1.229,
+          "valign": "bottom",
+          "hideIfEmpty": false,
+          "id": "k13"
+        },
+        {
+          "type": "text",
+          "name": "Text",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 250,
+          "y": 324,
+          "text": "Text",
+          "font": "AptosRegular",
+          "size": 25,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 30,
+          "minSize": 15,
+          "step": 1.25,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "emv6frsz20"
+        },
+        {
+          "type": "text",
+          "name": "Text 2",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 263.22,
+          "y": 41.3,
+          "text": "Text",
+          "font": "AptosRegular",
+          "size": 25,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 30,
+          "minSize": 15,
+          "step": 1.25,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "emv6frw161"
+        },
+        {
+          "type": "text",
+          "name": "Text 3",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 24.94,
+          "y": 97.25,
+          "text": "newton  mia",
+          "font": "AptosRegular",
+          "size": 25,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 30,
+          "minSize": 15,
+          "step": 1.25,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "emwk9133y1"
+        },
+        {
+          "type": "image",
+          "name": "Image 2",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 4.83,
+          "y": 68.58,
+          "src": "CARD_UI/test_card/Screenshot-From-2026-11-16-12-14-31.png",
+          "w": 490.35,
+          "h": 225.33,
+          "fit": "contain",
+          "autoCrop": false,
+          "tint": "",
+          "fallbackColor": "",
+          "id": "emwk922mp3"
+        },
+        {
+          "type": "circle",
+          "name": "Circle",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 242.15,
+          "y": 375.02,
+          "w": 100,
+          "h": 100,
+          "fill": "#FFFFFF",
+          "fillOpacity": 1,
+          "stroke": "",
+          "strokeWidth": 0,
+          "strokeOpacity": 1,
+          "id": "emwk92lfq4"
+        },
+        {
+          "type": "text",
+          "name": "Text 4",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 252.75,
+          "y": 405.78,
+          "text": "golla text",
+          "font": "AptosRegular",
+          "size": 25,
+          "color": "#000000",
+          "opacity": 1,
+          "ax": 0,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 30,
+          "minSize": 15,
+          "step": 1.25,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "emwk92pco5"
+        },
+        {
+          "type": "rich",
+          "name": "Rich text",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 250,
+          "y": 324,
+          "ax": 0,
+          "ay": 0.5,
+          "hideIfEmpty": false,
+          "segments": [
+            {
+              "text": "Phone: ",
+              "font": "HelveticaRegular",
+              "size": 20,
+              "color": "#FFFFFF",
+              "opacity": 1
+            },
+            {
+              "text": "{{PhoneNumber}}",
+              "font": "HelveticaBold",
+              "size": 20,
+              "color": "#FFFFFF",
+              "opacity": 1
+            }
+          ],
+          "id": "emwk93i4h6"
+        },
+        {
+          "type": "image",
+          "name": "Image 3",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 332.99,
+          "y": 324,
+          "src": "",
+          "w": 150,
+          "h": 150,
+          "fit": "contain",
+          "autoCrop": false,
+          "tint": "",
+          "fallbackColor": "",
+          "id": "emwk97z0p8"
+        },
+        {
+          "type": "circle",
+          "name": "Circle 2",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 137.06,
+          "y": 62.41,
+          "w": 231.38,
+          "h": 231.38,
+          "fill": "#FFFFFF",
+          "fillOpacity": 1,
+          "stroke": "",
+          "strokeWidth": 0,
+          "strokeOpacity": 1,
+          "id": "emwk98lwwb"
+        },
+        {
+          "type": "rich",
+          "name": "Rich text 2",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 358.57,
+          "y": 265.6,
+          "ax": 0,
+          "ay": 0.5,
+          "hideIfEmpty": false,
+          "segments": [
+            {
+              "text": "Phone: ",
+              "font": "HelveticaRegular",
+              "size": 20,
+              "color": "#FFFFFF",
+              "opacity": 1
+            },
+            {
+              "text": "{{PhoneNumber}}",
+              "font": "HelveticaBold",
+              "size": 20,
+              "color": "#FFFFFF",
+              "opacity": 1
+            }
+          ],
+          "id": "emwk9caekf"
+        },
+        {
+          "id": "emwk9nqktk",
+          "type": "avatar",
+          "name": "Photo",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 169.21,
+          "y": 321.63,
+          "src": "{{AvatarURL}}",
+          "shape": "rect",
+          "w": 150,
+          "h": 180,
+          "stroke": "#FFFFFF",
+          "strokeWidth": 0
+        }
+      ]
+    },
+    {
+      "id": "back",
+      "name": "Back",
+      "role": "oneid",
+      "designW": 401,
+      "designH": 637,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "#1F104F",
+      "clipRadius": 20,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": [
+        {
+          "type": "rect",
+          "name": "Background",
+          "hidden": false,
+          "locked": true,
+          "attach": null,
+          "rotation": 0,
+          "x": 0,
+          "y": 0,
+          "w": 401,
+          "h": 637,
+          "radius": 0,
+          "fill": "#22114A",
+          "fillOpacity": 1,
+          "stroke": "",
+          "strokeWidth": 0,
+          "strokeOpacity": 1,
+          "id": "k14"
+        },
+        {
+          "type": "qr",
+          "name": "VDS QR",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 133.25,
+          "y": 91.58,
+          "source": "vds",
+          "w": 136.51,
+          "h": 136.51,
+          "panel": true,
+          "panelColor": "#241F31",
+          "radius": 10,
+          "padding": 10,
+          "forceBlack": true,
+          "logo": {
+            "src": "",
+            "size": 0,
+            "radius": 0,
+            "padding": 0,
+            "panelColor": "#FFFFFF"
+          },
+          "id": "k15"
+        },
+        {
+          "type": "text",
+          "name": "Legal",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 200.5,
+          "y": 360,
+          "text": "NID-Verified Credential. Digitally\nSigned by Certifying Authority under\nthe ICT Act, 2006. Legally Valid.",
+          "font": "HelveticaItalic",
+          "size": 16,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0.5,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": true,
+            "top": "#FFFFFF",
+            "bottom": "#38D9C0",
+            "stop": 0.3
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 20,
+          "minSize": 12,
+          "step": 1,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "k16"
+        },
+        {
+          "type": "rich",
+          "name": "Phone",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 200.5,
+          "y": 470,
+          "ax": 0.5,
+          "ay": 0.5,
+          "hideIfEmpty": true,
+          "segments": [
+            {
+              "text": "Phone: ",
+              "font": "HelveticaRegular",
+              "size": 16,
+              "color": "#FFFFFF",
+              "opacity": 1
+            },
+            {
+              "text": "{{PhoneNumber}}",
+              "font": "HelveticaBold",
+              "size": 16,
+              "color": "#FFFFFF",
+              "opacity": 1
+            }
+          ],
+          "id": "k17"
+        },
+        {
+          "type": "text",
+          "name": "Expiry",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 166.65,
+          "y": 251.89,
+          "text": "Valid till {{ExpiryDate|date}} \u00b7 {{BusinessName|title}}",
+          "font": "AptosBold",
+          "size": 15,
+          "color": "#FFFFFF",
+          "opacity": 1,
+          "ax": 0.5,
+          "ay": 0.5,
+          "gradient": {
+            "enabled": false,
+            "top": "#C99032",
+            "bottom": "#EAE2B1",
+            "stop": 0.2
+          },
+          "wrap": "none",
+          "maxWidth": 300,
+          "maxLines": 2,
+          "lineSpacing": 24,
+          "minSize": 12,
+          "step": 1,
+          "valign": "top",
+          "hideIfEmpty": false,
+          "id": "k18"
+        },
+        {
+          "type": "avatar",
+          "name": "Small Photo",
+          "hidden": false,
+          "locked": false,
+          "attach": null,
+          "rotation": 0,
+          "x": 326.76,
+          "y": 534.29,
+          "src": "{{AvatarURL}}",
+          "shape": "rect",
+          "w": 60,
+          "h": 75,
+          "stroke": "#FFFFFF",
+          "strokeWidth": 0,
+          "id": "k19"
+        }
+      ]
+    },
+    {
+      "id": "face3",
+      "name": "Face 3",
+      "role": "none",
+      "designW": 500,
+      "designH": 648,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "",
+      "clipRadius": 0,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": []
+    },
+    {
+      "id": "face4",
+      "name": "Face 4",
+      "role": "none",
+      "designW": 500,
+      "designH": 648,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "",
+      "clipRadius": 0,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": []
+    },
+    {
+      "id": "face5",
+      "name": "Face 5",
+      "role": "none",
+      "designW": 401,
+      "designH": 637,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "",
+      "clipRadius": 0,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": []
+    },
+    {
+      "id": "face6",
+      "name": "Face 6",
+      "role": "none",
+      "designW": 401,
+      "designH": 637,
+      "outW": 3942,
+      "outH": 6174,
+      "background": "",
+      "clipRadius": 0,
+      "reference": {
+        "src": "",
+        "opacity": 0.5,
+        "visible": false
+      },
+      "elements": []
+    }
+  ],
+  "fields": {
+    "PhoneNumber": {
+      "mode": "auto",
+      "value": ""
+    },
+    "MemberName": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "Designation": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "RegNo": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "Program": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "Department": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "OneID": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "AvatarURL": {
+      "mode": "auto",
+      "value": ""
+    },
+    "BloodGroup": {
+      "mode": "auto",
+      "value": "A+"
+    },
+    "IssueDate": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "ExpiryDate": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "BusinessName": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "OptionalPhoneNumber": {
+      "mode": "auto",
+      "value": ""
+    },
+    "FaxNumber": {
+      "mode": "auto",
+      "value": ""
+    },
+    "WebsiteUrl": {
+      "mode": "auto",
+      "value": ""
+    },
+    "Email": {
+      "mode": "auto",
+      "value": "nrwton@gmail.com"
+    },
+    "BrandColor": {
+      "mode": "auto",
+      "value": "#631FB4"
+    },
+    "LOGO": {
+      "mode": "auto",
+      "value": ""
+    },
+    "Address": {
+      "mode": "auto",
+      "value": "N/A"
+    },
+    "SignatureURL": {
+      "mode": "auto",
+      "value": ""
+    },
+    "SignatureLabel": {
+      "mode": "fixed",
+      "value": "Authorised Signature"
+    },
+    "FooterDisclaimer1": {
+      "mode": "fixed",
+      "value": ""
+    },
+    "FooterDisclaimer2": {
+      "mode": "fixed",
+      "value": ""
+    }
+  },
+  "sample": {
+    "UserName": "Md. Shahriyer Islam Sagor Chowdhury",
+    "AvatarURL": "data:image/jpeg;base64,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",
+    "Designation": "Kitchen Sink Student",
+    "RefID": "25108046",
+    "MetaDepartment": "eee",
+    "BusinessName": "SINK UNIVERSITY of asia",
+    "Phone": "",
+    "ExpiryDate": "2027-10-13",
+    "OneID": "1234567890",
+    "MetaDesignation": "",
+    "MetaProgram": "errtt",
+    "MetaBloodGroup": "B+",
+    "Email": "",
+    "BrandColor": "#631FB4",
+    "Address": "",
+    "Logo": "",
+    "Signature": "",
+    "OptionalPhoneNumber": "",
+    "Fax": "",
+    "WebsiteURL": "",
+    "IssueDate": "2026-10-13",
+    "CardNumber": "4123 4567 8901 2345",
+    "PaymentQR": "dummy-payment-qr-code-data",
+    "DgepayBusinessName": "DG Infotech"
+  }
+}

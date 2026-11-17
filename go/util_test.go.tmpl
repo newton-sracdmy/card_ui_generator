@@ -1,0 +1,170 @@
+package card_generator
+
+// card-ui utility harness. card-ui injects this file with `go test -overlay`;
+// it never exists in the repository.
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"employee-card-admin/assets/fonts"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"golang.org/x/image/font"
+	"golang.org/x/image/font/opentype"
+)
+
+func TestCardUIUtil(t *testing.T) {
+	var (
+		result any
+		err    error
+	)
+	switch os.Getenv("CARDUI_CMD") {
+	case "fetch":
+		result, err = cardUIUtilFetch(cardUIUtilKeys(), os.Getenv("CARDUI_ASSET_DIR"))
+	case "exists":
+		result, err = cardUIUtilExists(cardUIUtilKeys())
+	case "list":
+		result, err = cardUIUtilList(os.Getenv("CARDUI_PREFIX"))
+	case "fonts":
+		result, err = cardUIUtilFontMetrics()
+	default:
+		err = fmt.Errorf("unknown CARDUI_CMD %q", os.Getenv("CARDUI_CMD"))
+	}
+	if err != nil {
+		result = map[string]string{"error": err.Error()}
+	}
+	raw, _ := json.Marshal(result)
+	if writeErr := os.WriteFile(os.Getenv("CARDUI_OUT"), raw, 0644); writeErr != nil {
+		t.Fatal(writeErr)
+	}
+}
+
+func cardUIUtilKeys() []string {
+	var keys []string
+	for _, k := range strings.Split(os.Getenv("CARDUI_KEYS"), "\n") {
+		if k = strings.TrimSpace(k); k != "" {
+			keys = append(keys, k)
+		}
+	}
+	return keys
+}
+
+func cardUIUtilFetch(keys []string, assetDir string) (map[string]string, error) {
+	loader, err := getDefaultS3Loader()
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]string{}
+	for _, key := range keys {
+		objectKey := ExtractObjectKey(key, loader.bucketName)
+		obj, err := loader.client.GetObject(context.Background(), &s3.GetObjectInput{
+			Bucket: aws.String(loader.bucketName),
+			Key:    aws.String(objectKey),
+		})
+		if err != nil {
+			result[key] = err.Error()
+			continue
+		}
+		body, err := io.ReadAll(io.LimitReader(obj.Body, loader.maxBytes))
+		obj.Body.Close()
+		if err != nil {
+			result[key] = err.Error()
+			continue
+		}
+		dst := filepath.Join(assetDir, filepath.FromSlash(key))
+		if err := os.MkdirAll(filepath.Dir(dst), 0755); err != nil {
+			result[key] = err.Error()
+			continue
+		}
+		if err := os.WriteFile(dst, body, 0644); err != nil {
+			result[key] = err.Error()
+			continue
+		}
+		result[key] = ""
+	}
+	return result, nil
+}
+
+func cardUIUtilExists(keys []string) (map[string]bool, error) {
+	loader, err := getDefaultS3Loader()
+	if err != nil {
+		return nil, err
+	}
+	result := map[string]bool{}
+	for _, key := range keys {
+		_, err := loader.client.HeadObject(context.Background(), &s3.HeadObjectInput{
+			Bucket: aws.String(loader.bucketName),
+			Key:    aws.String(ExtractObjectKey(key, loader.bucketName)),
+		})
+		result[key] = err == nil
+	}
+	return result, nil
+}
+
+func cardUIUtilList(prefix string) (map[string]any, error) {
+	loader, err := getDefaultS3Loader()
+	if err != nil {
+		return nil, err
+	}
+	folders := []string{}
+	files := []map[string]any{}
+	paginator := s3.NewListObjectsV2Paginator(loader.client, &s3.ListObjectsV2Input{
+		Bucket:    aws.String(loader.bucketName),
+		Prefix:    aws.String(prefix),
+		Delimiter: aws.String("/"),
+	})
+	for paginator.HasMorePages() && len(files) < 5000 {
+		page, err := paginator.NextPage(context.Background())
+		if err != nil {
+			return nil, err
+		}
+		for _, p := range page.CommonPrefixes {
+			folders = append(folders, aws.ToString(p.Prefix))
+		}
+		for _, obj := range page.Contents {
+			files = append(files, map[string]any{"key": aws.ToString(obj.Key), "size": aws.ToInt64(obj.Size)})
+		}
+	}
+	return map[string]any{"bucket": loader.bucketName, "folders": folders, "files": files}, nil
+}
+
+// cardUIUtilFontMetrics reports per-pixel font metrics so the browser preview can
+// reproduce gg's FontHeight-based text anchoring.
+func cardUIUtilFontMetrics() (map[string]map[string]float64, error) {
+	all := map[string][]byte{
+		"AptosRegular":        fonts.AptosRegular,
+		"AptosBold":           fonts.AptosBold,
+		"AptosItalic":         fonts.AptosItalic,
+		"HelveticaRegular":    fonts.HelveticaRegular,
+		"HelveticaBold":       fonts.HelveticaBold,
+		"HelveticaItalic":     fonts.HelveticaItalic,
+		"HelveticaBoldItalic": fonts.HelveticaBoldItalic,
+	}
+	result := map[string]map[string]float64{}
+	for name, ttf := range all {
+		parsed, err := opentype.Parse(ttf)
+		if err != nil {
+			return nil, err
+		}
+		const size = 1000.0
+		face, err := opentype.NewFace(parsed, &opentype.FaceOptions{Size: size, DPI: 72, Hinting: font.HintingNone})
+		if err != nil {
+			return nil, err
+		}
+		m := face.Metrics()
+		result[name] = map[string]float64{
+			"height":  float64(m.Height) / 64 / size,
+			"ascent":  float64(m.Ascent) / 64 / size,
+			"descent": float64(m.Descent) / 64 / size,
+		}
+	}
+	return result, nil
+}

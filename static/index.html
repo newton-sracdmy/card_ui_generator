@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>card-ui</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect x=%221%22 y=%223%22 width=%2214%22 height=%2210%22 rx=%222%22 fill=%22%234f8cff%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand"><span class="logo">▦</span> card-ui</div>
+    <button id="btn-open" title="Open or create a design">Designs</button>
+    <span id="design-name"></span>
+    <div id="add-tools"></div>
+    <div class="spacer"></div>
+    <button id="btn-undo" class="icon" title="Undo (Ctrl+Z)">↶</button>
+    <button id="btn-redo" class="icon" title="Redo (Ctrl+Shift+Z)">↷</button>
+    <button id="btn-code" title="View the generated Go">Code</button>
+    <button id="btn-render" class="primary" title="Compile the generated Go and render every face (Ctrl+Enter)">Render with Go</button>
+    <button id="btn-export" class="accent" title="Write the Go file and test into card_generator">Export</button>
+  </header>
+  <main>
+    <aside id="left">
+      <div id="faces"></div>
+      <div class="pane-title">Layers <small>top first · drag to reorder</small></div>
+      <div id="layers"></div>
+      <div class="shortcuts">
+        <b>Canvas</b> drag to move · Shift locks axis · Alt disables snapping · Space/middle-drag or drag empty area to pan · Ctrl+wheel zoom<br>
+        <b>Keys</b> arrows nudge (Shift ×10) · Del delete · Ctrl+D duplicate · Ctrl+C/V copy between faces · Ctrl+[ ] order · Ctrl+Z undo · Ctrl+Enter render<br>
+        <b>Drop</b> PNG layers onto the canvas to upload and place them
+      </div>
+    </aside>
+    <section id="stage">
+      <div id="viewbar"></div>
+      <div id="canvas-wrap"><canvas id="canvas"></canvas></div>
+      <footer id="statusbar"><span id="status-left"></span><span id="status-right"></span></footer>
+    </section>
+    <aside id="right">
+      <nav id="right-tabs">
+        <button data-tab="props">Properties</button>
+        <button data-tab="data">Data</button>
+        <button data-tab="card">Card</button>
+      </nav>
+      <div id="panel-props" class="panel"></div>
+      <div id="panel-data" class="panel" hidden></div>
+      <div id="panel-card" class="panel" hidden></div>
+    </aside>
+  </main>
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+  <script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
