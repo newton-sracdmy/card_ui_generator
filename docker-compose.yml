@@ -1,0 +1,12 @@
+services:
+  card-ui:
+    build: .
+    container_name: card_ui_generator
+    ports:
+      - "8765:8765"
+    volumes:
+      # Persist newly created designs on the host
+      - ./designs:/app/designs
+      # Persist uploaded image assets on the host
+      - ./assets:/app/assets
+    restart: unless-stopped
