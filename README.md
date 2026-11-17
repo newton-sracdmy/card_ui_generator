@@ -1,21 +1,24 @@
-# card-ui
+# Card UI Generator
 
-A visual designer for `card_generator` cards. Lay a card out in the browser, check it
-against a real Go render, then export the Go file and its test.
+A standalone visual card designer and Go code generator. Lay a card out in the browser, check it against a real pixel-identical Go render, and export ready-to-use Go card generators.
 
-This folder is listed in `.git/info/exclude`, so git ignores it without touching
-the committed `.gitignore`. Only what you **Export** lands in `card_generator/`.
+## Features
 
-## Run
+- **100% Standalone**: Self-contained Go engine and font metrics. No external project dependencies required.
+- **Pixel-Identical Go Preview**: Uses Go test overlay compilation to render cards with official fonts and helpers.
+- **Visual Design Canvas**: Drag-and-drop layers, Figma design-unit scaling, multiline wrapping, and real-time color styling.
+
+## Run Locally or on Server
 
 ```bash
-python3 card-ui/server.py            # opens http://127.0.0.1:8765
-python3 card-ui/server.py --no-open --port 9000
+# Start on default port 8765
+python3 server.py
+
+# Run on server without opening browser
+python3 server.py --host 0.0.0.0 --port 8765 --no-open
 ```
 
-Needs Python 3.9+ (standard library only), the Go toolchain, and the AWS keys in
-`.env.dev` / `.env.uat` / `.env` (the same ones `university_card_image_test.go` uses)
-to read assets from S3.
+Needs **Python 3.9+** and the **Go toolchain** (Go 1.20+). AWS credentials can be optionally supplied via `.env` if loading remote assets from S3.
 
 ## Workflow
 

@@ -18,15 +18,14 @@ from pathlib import Path
 UI_DIR = Path(__file__).resolve().parent
 
 def _find_repo_dir():
+    if (UI_DIR / "card_generator").is_dir():
+        return UI_DIR
     if "CARD_UI_REPO_DIR" in os.environ:
         return Path(os.environ["CARD_UI_REPO_DIR"]).resolve()
     candidate = UI_DIR.parent
     if (candidate / "card_generator").is_dir():
         return candidate.resolve()
-    fallback = Path("/home/amanul/RVL/employee-card-admin")
-    if (fallback / "card_generator").is_dir():
-        return fallback.resolve()
-    return candidate.resolve()
+    return UI_DIR
 
 REPO_DIR = _find_repo_dir()
 PKG_DIR = REPO_DIR / "card_generator"
