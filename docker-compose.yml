@@ -3,7 +3,8 @@ services:
     build: .
     container_name: card_ui_generator
     ports:
-      - "8765:8765"
+      # Maps host port 8090 (or custom PORT env) to container port 8765
+      - "${PORT:-8090}:8765"
     volumes:
       # Persist newly created designs on the host
       - ./designs:/app/designs
